@@ -1,10 +1,10 @@
 from flask import Flask, request, jsonify
 import openai
 import os
-from flask_cors import CORS  # ✅ नयाँ लाइन
+from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)  # ✅ नयाँ लाइन: सबै origin बाट access गर्न अनुमति दिन्छ
+CORS(app)
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
@@ -21,13 +21,13 @@ def ask():
 
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
+            model="gpt-3.5-turbo",  # ⚠️ GPT-3.5 प्रयोग गर्नुहोस्
             messages=[{"role": "user", "content": prompt}]
         )
         answer = response['choices'][0]['message']['content']
         return jsonify({"answer": answer})
     except Exception as e:
-        print("🔥 Internal Server Error:", str(e))
+        print("🔥 Internal Server Error:", str(e))  # ✅ Error message print गर्ने लाइन
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
