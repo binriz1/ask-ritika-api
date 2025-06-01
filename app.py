@@ -10,7 +10,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 @app.route("/")
 def home():
-    return "✅ Ritika Rai API is active."
+    return "Ritika Rai API is active."
 
 @app.route("/ask", methods=["POST"])
 def ask():
