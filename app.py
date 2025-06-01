@@ -27,6 +27,7 @@ def ask():
         answer = response['choices'][0]['message']['content']
         return jsonify({"answer": answer})
     except Exception as e:
+        print("🔥 Internal Server Error:", str(e))
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
