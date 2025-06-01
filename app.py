@@ -1,9 +1,11 @@
-
 from flask import Flask, request, jsonify
 import openai
 import os
+from flask_cors import CORS  # ✅ नयाँ लाइन
 
 app = Flask(__name__)
+CORS(app)  # ✅ नयाँ लाइन: सबै origin बाट access गर्न अनुमति दिन्छ
+
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 @app.route("/")
