@@ -21,7 +21,7 @@ def ask():
 
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",  # ⚠️ GPT-3.5 प्रयोग गर्नुहोस्
+            model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": prompt}]
         )
         answer = response['choices'][0]['message']['content']
